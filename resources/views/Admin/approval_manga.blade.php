@@ -3,7 +3,7 @@
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="{{URL::to('/admin/dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item active">list-truyen</li>
+        <li class="breadcrumb-item active">approval-manga</li>
     </ol>
 </div>
 @endsection
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Danh sách truyện</h3>
+                <h3 class="card-title">Duyệt truyện</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -29,6 +29,7 @@
                 </div>
             </div>
             <!-- /.card-header -->
+            <?php if($manga->count() > 0){ ?>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
@@ -39,24 +40,31 @@
                             <th>Người đăng</th>
                             <th>Trạng thái</th>
                             <th>Hình ảnh</th>
-                            <th>Công cụ</th>
+                            <th>Nội dung chính</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $key => $truyen)
+                        @foreach ($manga as $key => $truyen)
                         <tr>
                             <td style="vertical-align: middle;">{{$truyen->Ma_truyen}}</td>
                             <td style="vertical-align: middle;">{{$truyen->Ten_truyen}}</td>
                             <td style="vertical-align: middle;">{{$truyen->created_at}}</td>
                             <td style="vertical-align: middle;"><span class="tag tag-success">{{$truyen->user_id}}</span></td>
-                            <?php foreach ($status as $key => $statuss) {
-                              if( $statuss->id == $truyen->Status){?>
-                            <td style="vertical-align: middle;">{{$statuss->name}}</td>
-                            <?php }}?>
+                            <td style="vertical-align: middle;"><select name="" class="form-control" onchange="location = this.value;">
+                                <?php foreach ($status as $key => $statuss) {
+                                ?>
+                                @if ($statuss->id == $truyen->Status)
+                                    <option value="" name1="{{$truyen->Status}}" selected >{{$statuss->name}}</option>
+                                @else
+                                    <option value="{{URL::to('/admin/approval-change-manga/'.$truyen->Ma_truyen.'/'.$statuss->id)}}" name1="{{$truyen->Status}}" >{{$statuss->name}}</option>
+                                @endif
+
+                                <?php }?>
+                            </select></td>
                             
                             <td style="vertical-align: middle;"><img style="width: 120px;" src="https://lh3.googleusercontent.com/d/{{$truyen->Hinh_anh_truyen}}" alt=""></td>
-                            <td style="vertical-align: middle;"><a href="{{URL::to('/admin/delete-manga/'.$truyen->Ma_truyen)}}" style="color:red;margin-left:5px" onclick="return confirm('Bạn chắc chắn muốn xóa? Các chap liên quan cũng sẽ xóa theo và Dữ liệu sẽ không thể khôi phục')"><i class="fas fa-trash-alt"></i></a></td>
-                            <td style="vertical-align: middle;"><a href="{{URL::to('/admin/list-chapter/'.$truyen->Ma_truyen)}}" ><i class="fas fa-info-circle fa-lg" style="color: #43fa00;"></i></a><br>Xem chapter</td>
+                            <td style="vertical-align: middle;">{{$truyen->Noi_dung}}</td>
+                            <!-- <td style="vertical-align: middle;"><a href="" style="margin-right:5px"><i class="fas fa-edit"></i></a><a href="" style="color:red;margin-left:5px"><i class="fas fa-trash-alt"></i></a></td> -->
                         </tr>    
                         @endforeach
                         
@@ -64,16 +72,91 @@
                     </tbody>
                 </table>
             </div>
+            <?php }
+            else{?>
+            <div style="margin:auto;font-size:15pt;color:#9BA4B5">Không có bài đăng mới</div>
+            <?php } ?>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
 </div>
-<button type="button" class="btn btn-block btn-outline-primary btn-lg" style="max-width:500px; margin:auto" onClick="document.location.href='/admin/add-manga'">Thêm truyện</button>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Duyệt chapter truyện</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <?php if($chapter->count() > 0){ ?>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Tên truyện</th>
+                            <th>Mã chapter</th>
+                            <th>Tên chapter</th>
+                            <th>Ngày đăng</th>
+                            <th>Người đăng</th>
+                            <th>Trạng thái</th>
+                            <!-- <th>Công cụ</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($chapter as $key => $chapters)
+                        <tr>
+                            <td style="vertical-align: middle;">{{$chapters->Ten_truyen}}</td>
+                            <td style="vertical-align: middle;">{{$chapters->Ma_chap}}</td>
+                            <td style="vertical-align: middle;">{{$chapters->Ten_chap}}</td>
+                            <td style="vertical-align: middle;">{{$chapters->created_at}}</td>
+                            <td style="vertical-align: middle;"><span class="tag tag-success">{{$chapters->user_id}}</span></td>
+                            <td><select name="" class="form-control" onchange="location = this.value;">
+                                <?php foreach ($status as $key => $statuss) {
+                                ?>
+                                @if ($statuss->id == $chapters->Status)
+                                    <option value="" name1="{{$chapters->Status}}" selected >{{$statuss->name}}</option>
+                                @else
+                                    <option value="{{URL::to('/admin/approval-change-chapter/'.$chapters->Ma_chap.'/'.$statuss->id)}}" name1="{{$chapters->Status}}" >{{$statuss->name}}</option>
+                                @endif
+
+                                <?php }?>
+                            </select></td>
+                            
+                            <!-- <td style="vertical-align: middle;"><a href="" style="margin-right:5px"><i class="fas fa-edit"></i></a><a href="" style="color:red;margin-left:5px"><i class="fas fa-trash-alt"></i></a></td> -->
+                            <td style="vertical-align: middle;"><a href="{{URL::to('/admin/detail-chapter/'.$chapters->Ma_chap)}}" ><i class="fas fa-info-circle fa-lg" style="color: #43fa00;"></i></a><br>Xem nội dung</td>
+                        </tr>    
+                        @endforeach
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+            <?php }
+            else{?>
+            <div style="margin:auto;font-size:15pt;color:#9BA4B5">Không có bài đăng mới</div>
+            <?php } ?>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -170,8 +253,7 @@
             }
         }
 
-        addClass('#truyen','active');
-        addClass('#add-truyen','active');
-        addClass('#menu-truyen','menu-open');
+        addClass('#duyet_bai','active');
+        
     </script>
 @endsection

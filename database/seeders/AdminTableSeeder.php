@@ -3,32 +3,25 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class AdminTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        
-        // \App\Models\User::factory(10)->create();
-    }
-}
-
-class AdminTableSeeder extends Seeder {
- 
-    public function run()
-    {
-        // DB::table('users')->delete();
- 
+        //
         DB::table('admins')->insert([
             'name' => 'Hoàng Long',
             'email' => 'admin',
             'password' => Hash::make('123123'),
         ]);
     }
- 
 }

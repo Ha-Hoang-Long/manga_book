@@ -19312,10 +19312,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/css/owl.carousel.min.css":
-/*!********************************************!*\
-  !*** ./resources/css/owl.carousel.min.css ***!
-  \********************************************/
+/***/ "./resources/css/owl.theme.default.min.css":
+/*!*************************************************!*\
+  !*** ./resources/css/owl.theme.default.min.css ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19325,10 +19325,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/owl.theme.default.min.css":
-/*!*************************************************!*\
-  !*** ./resources/css/owl.theme.default.min.css ***!
-  \*************************************************/
+/***/ "./resources/css/styles.css":
+/*!**********************************!*\
+  !*** ./resources/css/styles.css ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19668,8 +19668,8 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/owl.theme.default.min": 0,
-/******/ 			"css/owl.carousel.min": 0
+/******/ 			"css/styles": 0,
+/******/ 			"css/owl.theme.default.min": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19719,10 +19719,10 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/owl.theme.default.min","css/owl.carousel.min"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/owl.theme.default.min","css/owl.carousel.min"], () => (__webpack_require__("./resources/css/owl.carousel.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/owl.theme.default.min","css/owl.carousel.min"], () => (__webpack_require__("./resources/css/owl.theme.default.min.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/owl.theme.default.min","css/owl.carousel.min"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/styles","css/owl.theme.default.min"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/styles","css/owl.theme.default.min"], () => (__webpack_require__("./resources/css/owl.theme.default.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/styles","css/owl.theme.default.min"], () => (__webpack_require__("./resources/css/styles.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/styles","css/owl.theme.default.min"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

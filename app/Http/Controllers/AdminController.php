@@ -55,7 +55,9 @@ class AdminController extends Controller
         $adminUser = Auth::guard('admin')->user();
         $result = DB::table('truyens')
             ->select('truyens.*')->get();
-        return view('Admin.list_manga',['user'=>$adminUser,'data' => $result]);
+        $status = DB::table('statuss')
+            ->select('statuss.*')->get();
+        return view('Admin.list_manga',['user'=>$adminUser,'data' => $result,'status'=>$status]);
     }
     
     public function add_manga(){
@@ -119,6 +121,48 @@ class AdminController extends Controller
         
     }
 
+    public function delete_manga($manga){
+        $adminUser = Auth::guard('admin')->user();
+        $mangas = DB::table('truyens')->where('Ma_truyen',$manga)->get();
+        
+        // dd($chapters[0]->Ma_chap);
+        $dir = '/';
+        $recursive = false; // Get subdirectories also?
+        $contents = collect(Storage::disk('google')->listContents($dir, $recursive));
+        $dir = $contents->where('type', '=', 'dir')
+        ->where('filename', '=', $mangas[0]->Ma_truyen)
+        ->first();
+        
+        Storage::disk('google')->deleteDirectory($dir['path']);
+    	DB::table('truyens')->where('Ma_truyen',$manga)->delete();
+    	Session::put('massage','Xóa sản phẩm thành công');
+    	return redirect()->back();
+    }
+
+    public function approval_manga(){
+        $adminUser = Auth::guard('admin')->user();
+        $manga = DB::table('truyens')
+        ->select('truyens.*')->where('Truyens.Status','1')->get();
+        $chapter = DB::table('chapters')
+                    ->join('Truyens','chapters.Ma_truyen','=','Truyens.Ma_truyen')
+                    ->select('chapters.*','Truyens.Ten_truyen','truyens.user_id')
+                    ->where('Chapters.Status','1')->get();
+        $status = DB::table('statuss')->select('statuss.*')->get();
+        // dd($chapter->count());
+        return view('Admin.approval_manga',
+                    [   'user'=>$adminUser,
+                        'manga'=>$manga,
+                        'status'=>$status,
+                        'chapter'=>$chapter
+                    ]);
+    }
+    public function approval_change_manga($ma,$id){
+        $adminUser = Auth::guard('admin')->user();
+        DB::table('truyens')->where('Ma_truyen',$ma)->update(['Status'=>$id]);
+        DB::table('truyens')->where('Ma_truyen',$ma)->update(['updated_at'=>Carbon::now()]);
+        return redirect()->route('admin.approval_manga',);
+    }
+
     //chapter
     public function list_chap_is_manga($Ma_truyen){
         $adminUser = Auth::guard('admin')->user();
@@ -127,6 +171,14 @@ class AdminController extends Controller
             ->join('Truyens','chapters.Ma_truyen','=','Truyens.Ma_truyen')
             ->select('chapters.*','Truyens.Ten_truyen')->where('chapters.Ma_truyen',$Ma_truyen)->get();
             return view('Admin.list_chap_ismanga',['user'=>$adminUser,'data' => $chapter]);
+    }
+
+    
+    public function approval_change_chapter($ma,$id){
+        $adminUser = Auth::guard('admin')->user();
+        DB::table('chapters')->where('Ma_chap',$ma)->update(['Status'=>$id]);
+        DB::table('chapters')->where('Ma_chap',$ma)->update(['updated_at'=>Carbon::now()]);
+        return redirect()->route('admin.approval_manga',);
     }
 
     public function create_chapter(){
@@ -142,6 +194,7 @@ class AdminController extends Controller
         $result['Ma_truyen'] =$request->Ma_truyen;
         $result['Ma_chap'] =$request->Ma_chap.'_'.$request->Ma_truyen;
         $result['Ten_chap'] =$request->Ten_chap;
+        $result['Status'] = "1";
         $result['Hinh_anh_1'] = $request->file("Hinh_anh_1");
         $result['Hinh_anh_2'] = $request->file("Hinh_anh_2");
         $result['Hinh_anh_3'] = $request->file("Hinh_anh_3");
@@ -177,8 +230,8 @@ class AdminController extends Controller
         $num = 0;
         foreach($result as $key=>$value){
             $num++;
-            if($value != null and $num > 3){
-                $num1 = $num-3;
+            if($value != null and $num > 4){
+                $num1 = $num-4;
                 // echo $value->getClientOriginalName();
                 $get_name_image = $value->getClientOriginalName();
                 $name_image = current(explode('.',$get_name_image));

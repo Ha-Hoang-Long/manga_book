@@ -17,6 +17,7 @@ class CreateChapterTable extends Migration
             $table->string('Ma_chap',20);
             $table->string('Ma_truyen',20);
             $table->string('Ten_chap',100);
+            $table->integer('Status');
             $table->text('Hinh_anh_1')->nullable();
             $table->text('Hinh_anh_2')->nullable();
             $table->text('Hinh_anh_3')->nullable();

@@ -13,8 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/owl.carousel.js', 'public/js')
-    .postCss('resources/css/owl.carousel.min.css', 'public/css')
+    // .postCss('resources/css/owl.carousel.min.css', 'public/css')
     .postCss('resources/css/owl.theme.default.min.css', 'public/css')
+    .postCss('resources/css/styles.css', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);

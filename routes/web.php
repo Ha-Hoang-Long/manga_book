@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +23,27 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('layout');
 });
-
+Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/admin', function () {
     return view('Admin.layout');
 });
 Route::get('admin/login', function () {
     return view('Admin.login');
 });
+Route::prefix('user')->group(function(){
+    Route::get('/profile',[UserController::class,'index'])->name('user.profile');
+    Route::get('/add-manga',[UserController::class,'add_manga'])->name('user.add_manga');
+    Route::post('/save-manga',[UserController::class,'save_manga'])->name('user.save_manga');
+    Route::get('/add-chapter',[UserController::class,'add_chapter'])->name('user.add_chapter');
+    Route::post('/save-chapter',[UserController::class,'save_chapter'])->name('user.save_chapter');
+
+});
+
+Route::group(['prefix'=>'ajax'], function(){
+    
+
+});
+Route::post('/comment',[UserController::class,'comment'])->name('user.comment');
 
 Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class,'index'])->name('admin.login');
@@ -48,6 +64,14 @@ Route::prefix('admin')->group(function(){
         Route::get('/list-chapter/{Ma_truyen}',[AdminController::class,'list_chap_is_manga'])->name('admin.list_chap_is_manga');
         Route::get('/delete-chapter/{Ma_chap}',[AdminController::class,'delete_chapter'])->name('admin.delete_chapter');
         Route::get('/detail-chapter/{Ma_chap}',[AdminController::class,'detail_chapter'])->name('admin.detail_chapter');
+        Route::get('/approval-manga',[AdminController::class,'approval_manga'])->name('admin.approval_manga');
+        Route::get('/approval-change-manga/{ma}/{id}',[AdminController::class,'approval_change_manga'])->name('admin.approval_change_manga');
+        Route::get('/approval-change-chapter/{ma}/{id}',[AdminController::class,'approval_change_chapter'])->name('admin.approval_change_chapter');
+        Route::get('/delete-manga/{Ma_truyen}',[AdminController::class,'delete_manga'])->name('admin.delete_manga');
+
         Route::get('/dynamic-image/{path}', 'AdminController@getImage');
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

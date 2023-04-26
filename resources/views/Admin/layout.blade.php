@@ -215,6 +215,13 @@
                                 </li>
                             </ul>
                         </li>
+                        <li id="" class="nav-item">
+                            <a id="duyet_bai" href="{{route('admin.approval_manga')}}" class="nav-link">
+                                <p>
+                                    Duyệt bài
+                                </p>
+                            </a>
+                        </li>
                         
                     </ul>
                 </nav>

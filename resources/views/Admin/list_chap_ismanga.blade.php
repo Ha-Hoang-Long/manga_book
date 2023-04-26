@@ -53,7 +53,7 @@
                             <td>{{$chap->Ten_chap}}</td>
                             <td>{{$chap->created_at}}</td>
                             
-                            <td><a href="" style="margin-right:5px"><i class="fas fa-edit"></i></a><a href="{{URL::to('/admin/delete-chapter/'.$chap->Ma_chap)}}" style="color:red;margin-left:5px"><i class="fas fa-trash-alt"></i></a></td>
+                            <td><a href="" style="margin-right:5px"><i class="fas fa-edit"></i></a><a href="{{URL::to('/admin/delete-chapter/'.$chap->Ma_chap)}}" style="color:red;margin-left:5px" onclick="return confirm('Bạn chắc chắn muốn xóa? Dữ liệu sẽ không thể khôi phục')"><i class="fas fa-trash-alt"></i></a></td>
                             <td style="vertical-align: middle;"><a href="{{URL::to('/admin/detail-chapter/'.$chap->Ma_chap)}}" ><i class="fas fa-info-circle fa-lg" style="color: #43fa00;"></i></a></td>
                         </tr>    
                         @endforeach
