@@ -38,7 +38,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach ($theloai as $key => $theloais )
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">{{$theloais->Ten_the_loai}}</a>
                                 @endforeach
                                 
                                 
@@ -69,11 +69,11 @@
         </div>
         
     </header>
-    <div class="container">
+    <div class="container" >
         @yield('content')
     </div>
 
-    <footer class="alert-secondary text-center text-lg-start bg-success sticky-bottom" style="position: sticky; bottom:0px;width: 100%;">
+    <footer class="alert-secondary text-center text-lg-start bg-success sticky-bottom" style="width: 100%;">
         <div class="container p-4">
             <div class="row">
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

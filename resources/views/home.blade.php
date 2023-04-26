@@ -7,19 +7,19 @@
             <button class="btn btn-success " type="submit">Tìm kiếm</button>
         </form>
     </div> -->
-    <div class="p-2">
+    <!-- <div class="p-2">
         <a href="{{ url('/') }}" class="btn mb-1 @if (!isset($xn)) btn-secondary @else btn-outline-secondary @endif ">Tất cả</a>
 
         
-    </div>
-    <div class="row">
+    </div> -->
+    <div class="row" style="margin-top:10px">
         @if ($truyen->count() > 0)
             @foreach ($truyen as $truyens)
                 <div class="col-md-3">
                     <div class="card mb-3 ">
                         <div class="card-body">
                             <div style="">
-                                <img style="object-fit: fill;width: 100%; " src="https://lh3.googleusercontent.com/d/{{$truyens->Hinh_anh_truyen}}" alt="ảnh">
+                                <img style="object-fit: fill;width:100% " src="https://lh3.googleusercontent.com/d/{{$truyens->Hinh_anh_truyen}}" alt="ảnh">
                             </div>
                         </div>
                         <div class="card-footer text-center">
