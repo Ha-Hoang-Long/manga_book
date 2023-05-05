@@ -82,7 +82,7 @@
 
         </div>
         @else
-        <div class="card-header">Bạn hãy <a href="{{ URL::to('/logins') }}">đăng nhập</a>  để bình luận</div>
+        <div class="card-header">Bạn hãy <a href="{{ route('login') }}">đăng nhập</a>  để bình luận</div>
 
         @endif
         
