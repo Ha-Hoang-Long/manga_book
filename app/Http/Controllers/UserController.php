@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
+use App\Models\Truyen;
+use App\Models\Chapter;
 use Storage;
 use File;
 use Validator;
@@ -21,6 +23,20 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function profile(){
+        
+
+        $theloai = DB::table('theloais')
+            ->select('theloais.*')->get();
+        $manga = Truyen::where(['user_id' => Auth::user()->id])->get();
+        $chapter = DB::table('chapters')
+                    ->join('Truyens','chapters.Ma_truyen','=','Truyens.Ma_truyen')
+                    ->join('statuss','chapters.Status','=','statuss.id')
+                    ->select('chapters.*','Truyens.Ten_truyen','truyens.user_id','statuss.name')
+                    ->where('Truyens.user_id',Auth::user()->id)->get();
+            return view('User.profile',compact('theloai','manga','chapter'));
     }
 
     public function add_manga(){
@@ -78,7 +94,7 @@ class UserController extends Controller
 
         if(\File::exists(public_path('images/'.$new_image))){
             \File::delete(public_path('images/'.$new_image));
-            return redirect()->route('home',);
+            return redirect()->route('user.profile',);
             }
     }
 
@@ -105,6 +121,16 @@ class UserController extends Controller
         $result['Hinh_anh_8'] = $request->file("Hinh_anh_8");
         $result['Hinh_anh_9'] = $request->file("Hinh_anh_9");
         $result['Hinh_anh_10'] = $request->file("Hinh_anh_10");
+        $result['Hinh_anh_11'] = $request->file("Hinh_anh_11");
+        $result['Hinh_anh_12'] = $request->file("Hinh_anh_12");
+        $result['Hinh_anh_13'] = $request->file("Hinh_anh_13");
+        $result['Hinh_anh_14'] = $request->file("Hinh_anh_14");
+        $result['Hinh_anh_15'] = $request->file("Hinh_anh_15");
+        $result['Hinh_anh_16'] = $request->file("Hinh_anh_16");
+        $result['Hinh_anh_17'] = $request->file("Hinh_anh_17");
+        $result['Hinh_anh_18'] = $request->file("Hinh_anh_18");
+        $result['Hinh_anh_19'] = $request->file("Hinh_anh_19");
+        $result['Hinh_anh_20'] = $request->file("Hinh_anh_20");
         // dd($result);
         
         $dir = '/';
@@ -154,7 +180,7 @@ class UserController extends Controller
         }
         DB::table('chapters')->insert($result);
         // Storage::disk('google')->makeDirectory($result['Ma_truyen']);
-        return redirect()->route('user.add_chapter',);
+        return redirect()->route('user.profile',);
     }
 
     public function comment(Request $request){
@@ -163,16 +189,19 @@ class UserController extends Controller
         ],[
             'Noi_dung.required' => 'Nội dung bình luận không được để trống'
         ]);
-
         if($validator->passes()){
             $data = [
                 'Ma_truyen' => $request->Ma_truyen,
                 'user_id_comment' => $request->user_id,
                 'Noi_dung' => $request->Noi_dung,
             ];
+            
             if($comment = Comment::create($data)){
+                $comments = Comment::where(['Ma_truyen' => $request->Ma_truyen])->orderBy('id','DESC')->get();
+                // $comment = DB::table('comments')->select('comments.*')->where('Ma_truyen',$request->Ma_truyen)->get();
+                // return response()->json(['data' => $comment]);
                 
-                return response()->json(['data' => $comment]);
+                return view('list_comment',['comment'=>$comments]);
             }
         }
        

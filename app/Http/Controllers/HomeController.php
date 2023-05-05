@@ -28,4 +28,16 @@ class HomeController extends Controller
                     // dd($truyen);
         return view('home',['theloai' => $theloai,'truyen'=>$truyen]);
     }
+
+    public function login(){
+        $theloai = DB::table('theloais')
+            ->select('theloais.*')->get();
+        return view('auth.login',['theloai' => $theloai]);
+    }
+
+    public  function register(){
+        $theloai = DB::table('theloais')
+            ->select('theloais.*')->get();
+        return view('auth.register',['theloai' => $theloai]);
+    }
 }

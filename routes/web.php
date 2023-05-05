@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TruyenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 Auth::routes(['verify' => true]);
-Route::get('/', function () {
-    return view('layout');
+Route::get('/homs', function () {
+    return view('homes');
 });
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/admin', function () {
@@ -30,12 +31,21 @@ Route::get('/admin', function () {
 Route::get('admin/login', function () {
     return view('Admin.login');
 });
+
+Route::get('/logins',[HomeController::class,'login'])->name('user.login');
+Route::get('/registers',[HomeController::class,'register'])->name('user.register');
+Route::post('/comment',[UserController::class,'comment'])->name('user.comment');
+
+Route::get('/detail-manga/{Ma_truyen}',[TruyenController::class,'detail_manga'])->name('detail_manga');
+Route::get('/doc-truyen/{Ma_truyen}/{Ma_chap}',[TruyenController::class,'read_manga'])->name('detail_manga');
+
 Route::prefix('user')->group(function(){
     Route::get('/profile',[UserController::class,'index'])->name('user.profile');
     Route::get('/add-manga',[UserController::class,'add_manga'])->name('user.add_manga');
     Route::post('/save-manga',[UserController::class,'save_manga'])->name('user.save_manga');
     Route::get('/add-chapter',[UserController::class,'add_chapter'])->name('user.add_chapter');
     Route::post('/save-chapter',[UserController::class,'save_chapter'])->name('user.save_chapter');
+    Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
 
 });
 
@@ -43,7 +53,7 @@ Route::group(['prefix'=>'ajax'], function(){
     
 
 });
-Route::post('/comment',[UserController::class,'comment'])->name('user.comment');
+
 
 Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class,'index'])->name('admin.login');

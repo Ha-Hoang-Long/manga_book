@@ -205,6 +205,16 @@ class AdminController extends Controller
         $result['Hinh_anh_8'] = $request->file("Hinh_anh_8");
         $result['Hinh_anh_9'] = $request->file("Hinh_anh_9");
         $result['Hinh_anh_10'] = $request->file("Hinh_anh_10");
+        $result['Hinh_anh_11'] = $request->file("Hinh_anh_11");
+        $result['Hinh_anh_12'] = $request->file("Hinh_anh_12");
+        $result['Hinh_anh_13'] = $request->file("Hinh_anh_13");
+        $result['Hinh_anh_14'] = $request->file("Hinh_anh_14");
+        $result['Hinh_anh_15'] = $request->file("Hinh_anh_15");
+        $result['Hinh_anh_16'] = $request->file("Hinh_anh_16");
+        $result['Hinh_anh_17'] = $request->file("Hinh_anh_17");
+        $result['Hinh_anh_18'] = $request->file("Hinh_anh_18");
+        $result['Hinh_anh_19'] = $request->file("Hinh_anh_19");
+        $result['Hinh_anh_20'] = $request->file("Hinh_anh_20");
         // dd($result);
 
         $dir = '/';

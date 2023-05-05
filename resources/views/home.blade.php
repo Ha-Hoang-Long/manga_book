@@ -15,16 +15,16 @@
     <div class="row" style="margin-top:10px">
         @if ($truyen->count() > 0)
             @foreach ($truyen as $truyens)
-                <div class="col-md-3">
+                <div class="col-md-4 col-sm-6 col-6 col-lg-3" >
                     <div class="card mb-3 ">
-                        <div class="card-body">
+                        <a href="{{URL::to('/detail-manga/'.$truyens->Ma_truyen)}}"><div class="card-body" style="padding: 0px">
                             <div style="">
-                                <img style="object-fit: fill;width:100% " src="https://lh3.googleusercontent.com/d/{{$truyens->Hinh_anh_truyen}}" alt="ảnh">
+                                <img style="object-fit: fill;width:100%;height:350px " src="https://lh3.googleusercontent.com/d/{{$truyens->Hinh_anh_truyen}}" alt="ảnh">
                             </div>
-                        </div>
+                        </div></a>
                         <div class="card-footer text-center">
 
-                            <a href="" class="font-weight-bold  text-dark"></a>
+                            <a href="{{URL::to('/detail-manga/'.$truyens->Ma_truyen)}}" class="font-weight-bold  text-dark">{{$truyens->Ten_truyen}}</a>
                         </div>
                     </div>
                 </div>
@@ -32,8 +32,10 @@
         @else
             <div class="jumbotron bg-light display-4 w-100 text-center">Không có truyện :</div>
         @endif
+        
+        
     </div>
     
 
-
+    
 @endsection

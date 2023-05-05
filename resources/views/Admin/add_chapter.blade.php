@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh  5<span class="required">*</span></label>
+                    <label for="exampleInputFile">Ảnh 5<span class="required">*</span></label>
                     <br>
                     <input type="file" name="Hinh_anh_5" onchange="chooseFile(this,'Hinh_anh_5')" />
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh  6<span class="required">*</span></label>
+                    <label for="exampleInputFile">Ảnh 6<span class="required">*</span></label>
                     <br>
                     <input type="file" name="Hinh_anh_6" onchange="chooseFile(this,'Hinh_anh_6')" />
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh  7<span class="required">*</span></label>
+                    <label for="exampleInputFile">Ảnh 7<span class="required">*</span></label>
                     <br>
                     <input type="file" name="Hinh_anh_7" onchange="chooseFile(this,'Hinh_anh_7')" />
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh  8<span class="required">*</span></label>
+                    <label for="exampleInputFile">Ảnh 8<span class="required">*</span></label>
                     <br>
                     <input type="file" name="Hinh_anh_8" onchange="chooseFile(this,'Hinh_anh_8')" />
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh  9<span class="required">*</span></label>
+                    <label for="exampleInputFile">Ảnh 9<span class="required">*</span></label>
                     <br>
                     <input type="file" name="Hinh_anh_9" onchange="chooseFile(this,'Hinh_anh_9')" />
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
@@ -117,6 +117,96 @@
                     <div class="col-md-8 col-sm-10 " style="margin:auto;">
                         <p class="help-block"></p>
                         <img  class="image-fasle" id="Hinh_anh_10" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 11<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_11" onchange="chooseFile(this,'Hinh_anh_11')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_11" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 12<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_12" onchange="chooseFile(this,'Hinh_anh_12')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_12" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 13<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_13" onchange="chooseFile(this,'Hinh_anh_13')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_13" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 14<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_14" onchange="chooseFile(this,'Hinh_anh_14')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_14" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 15<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_15" onchange="chooseFile(this,'Hinh_anh_15')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_15" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 16<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_16" onchange="chooseFile(this,'Hinh_anh_16')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_16" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 17<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_17" onchange="chooseFile(this,'Hinh_anh_17')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_17" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 18<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_18" onchange="chooseFile(this,'Hinh_anh_18')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_18" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 19<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_19" onchange="chooseFile(this,'Hinh_anh_19')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_19" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh 20<span class="required">*</span></label>
+                    <br>
+                    <input type="file" name="Hinh_anh_20" onchange="chooseFile(this,'Hinh_anh_20')" />
+                    <div class="col-md-8 col-sm-10 " style="margin:auto;">
+                        <p class="help-block"></p>
+                        <img  class="image-fasle" id="Hinh_anh_20" style="width: inherit;" onerror="this.src='/admin_images/no-avatar.png'" />
                     </div>
                 </div>
                 
